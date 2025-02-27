@@ -1,0 +1,25 @@
+function ProductCard({ image, title, price }) {
+  return (
+    <div className="bg-white dark:bg-gray-800 text-black dark:text-white rounded-2xl p-5 shadow-md dark:shadow-lg transition-transform hover:scale-105 hover:shadow-xl">
+      <img src={image} alt={title} className="w-full h-40 object-contain mb-4 rounded-lg" />
+      <h4 className="text-lg font-semibold">{title}</h4>
+      <p className="text-green-600 dark:text-green-400 font-bold text-xl mt-2">${price}</p>
+      <button className="mt-3 bg-green-500 dark:bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 dark:hover:bg-green-500 hover:scale-105 active:scale-95 transition-all">
+        Купить
+      </button>
+    </div>
+  );
+}
+
+function MainSection({ products }) {
+  return (
+    <section className="bg-gray-100 dark:bg-gradient-to-b from-gray-900 to-gray-700 text-black dark:text-white py-16 px-4">
+      <h3 className="text-4xl font-bold text-green-600 dark:text-green-400 text-center">Наши товары</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8 container mx-auto">
+        {products.map((product) => (
+          <ProductCard key={product.id} image={product.image} title={product.title} price={product.price} />
+        ))}
+      </div>
+    </section>
+  );
+}
